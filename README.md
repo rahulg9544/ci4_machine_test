@@ -1,10 +1,10 @@
 DB :  ci4_machine_test  <br><br><br>
 
-Register
+Register<br>
 http://localhost:8000/register <br><br>
 
-Login
+Login<br>
 http://localhost:8000/login <br><br>
 
-Dashboard
+Dashboard<br>
 profile update 
