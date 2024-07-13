@@ -1,4 +1,4 @@
-DB :  ci4_machine_test  <br><br><br>
+DB :  ci4_machine_test  in root file <br><br><br>
 
 Register<br>
 http://localhost:8000/register <br><br>
