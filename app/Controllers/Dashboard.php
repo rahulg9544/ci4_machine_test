@@ -18,19 +18,10 @@ class Dashboard extends Controller
         // Get all users except the logged-in user
         $query = "SELECT * 
         FROM users 
-        WHERE id != ? 
-        AND id NOT IN (
-            SELECT user_id 
-            FROM friends 
-            WHERE friend_id = ? AND status = 'accepted'
-            UNION
-            SELECT friend_id 
-            FROM friends 
-            WHERE user_id = ? AND status = 'accepted'
-        )";
+        WHERE id != ?";
 
 // Execute the query
-$users = $userModel->query($query, [$userId, $userId, $userId])->getResult();
+$users = $userModel->query($query, [$userId])->getResult();
 
 
 
@@ -107,6 +98,8 @@ $data = [
     {
         $friendModel = new FriendModel();
 
+        $userModel = new UserModel();
+
         $user = session()->get('user');
      $userId = $user['id']; 
 
@@ -116,11 +109,31 @@ $data = [
             'status' => 'pending'
         ];
 
-        // print_r($data);
-        // exit;
+        $user_data = [
+            'user_status' => 1
+        ];
 
+    
+     //   $userModel = new \App\Models\UserModel();
+       // $userId = 1; // Assuming you have the user ID
+        
+        
 
         $friendModel->save($data);
+
+        // $friendModel->update($uid,  $user_data);
+
+         // Using the query builder
+         $db = \Config\Database::connect();
+         $builder = $db->table('users'); // Assuming your table name is 'users'
+ 
+         $builder->where('id', $friendId);
+         if ($builder->update($user_data)) {
+             echo "User status updated successfully using query builder.";
+         } else {
+             echo "Failed to update user status using query builder.";
+         }
+
         return redirect()->to('/dashboard');
     }
 
