@@ -13,9 +13,13 @@
 
     <h2>All Users</h2>
     <ul>
-
         <?php foreach ($filteredUsers as $user): ?>
+
+            <?php if($user->user_status == 1) {?>
+                <li><?= $user->name; ?> Pending</li>
+                <?php } else {?>
             <li><?= $user->name; ?> <a href="/dashboard/sendRequest/<?= $user->id ?>">Send Friend Request</a></li>
+            <?php } ?>
         <?php endforeach; ?>
     </ul>
 
