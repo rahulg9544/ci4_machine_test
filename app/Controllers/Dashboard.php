@@ -123,15 +123,15 @@ $data = [
 
         // $friendModel->update($uid,  $user_data);
 
-         // Using the query builder
+ 
          $db = \Config\Database::connect();
-         $builder = $db->table('users'); // Assuming your table name is 'users'
+         $builder = $db->table('users'); 
  
          $builder->where('id', $friendId);
          if ($builder->update($user_data)) {
-             echo "User status updated successfully using query builder.";
+             echo "User status updated successfully";
          } else {
-             echo "Failed to update user status using query builder.";
+             echo "Failed to update user status";
          }
 
         return redirect()->to('/dashboard');
