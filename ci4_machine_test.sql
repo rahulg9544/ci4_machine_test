@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:4306
--- Generation Time: Jul 13, 2024 at 11:23 AM
+-- Generation Time: Jul 14, 2024 at 07:08 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -35,14 +35,6 @@ CREATE TABLE `friends` (
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `friends`
---
-
-INSERT INTO `friends` (`id`, `user_id`, `friend_id`, `status`, `created_at`, `updated_at`) VALUES
-(1, 10, 9, 'accepted', '2024-07-13 09:20:39', '2024-07-13 09:21:37'),
-(2, 10, 9, 'accepted', '2024-07-13 09:20:56', '2024-07-13 09:21:52');
 
 -- --------------------------------------------------------
 
@@ -81,17 +73,10 @@ CREATE TABLE `users` (
   `profile_pic` varchar(255) DEFAULT NULL,
   `gender` enum('male','female','other') NOT NULL,
   `password` varchar(255) NOT NULL,
+  `user_status` int(11) NOT NULL DEFAULT 0,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `email`, `profile_pic`, `gender`, `password`, `created_at`, `updated_at`) VALUES
-(9, 'rahul', 'rahul@gmail.com', '1720862111_053172e6f26f84163dd8.jpg', 'male', '$2y$10$nDNRq/3akzEwsuaFjFfvY.wmrgyCNP7RO3ZpQCFb4dC2AUBEv0MSa', '2024-07-13 09:15:11', '2024-07-13 09:15:11'),
-(10, 'latheesh', 'latheesh@gmail.com', '1720862141_ca3153e6c8e6f51042a0.jpg', 'male', '$2y$10$FE42PO68zRuKvIbFknhswOieH7D2oEJwHtrX0YlrG.9EeHsS3TdKm', '2024-07-13 09:15:41', '2024-07-13 09:15:41');
 
 --
 -- Indexes for dumped tables
@@ -126,7 +111,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `friends`
 --
 ALTER TABLE `friends`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -138,7 +123,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- Constraints for dumped tables
